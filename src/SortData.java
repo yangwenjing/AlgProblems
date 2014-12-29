@@ -11,7 +11,7 @@ public abstract class SortData {
 		Random rng = new Random();
 		for(int i=0;i<this.arrlen;i++)
 		{
-			this.arr[i]=rng.nextInt();
+			this.arr[i]=rng.nextInt(this.arrlen);
 		}
 	}
 	//由一个给定的数组初始化

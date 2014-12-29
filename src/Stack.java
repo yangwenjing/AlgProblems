@@ -18,7 +18,7 @@ public class Stack {
 		Random rng = new Random();
 		for(int i=0;i<this.arrlen;i++)
 		{
-			this.arr[i]=rng.nextInt();
+			this.arr[i]=rng.nextInt(this.arrlen);
 		}
 	}
 	//由一个给定的数组初始化
@@ -88,7 +88,7 @@ public class Stack {
 		// TODO Auto-generated method stub
 		int arr[] = {10,8,9,7,11,15};
 		//System.out.println("输入：\n"+arr);
-		Stack st = new Stack(arr);
+		Stack st = new Stack(10);
 		st.print();
 		st.adjustHeap();
 		st.print();
