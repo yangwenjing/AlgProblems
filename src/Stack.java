@@ -73,7 +73,6 @@ public class Stack {
 			System.out.println("***第"+i+"次调整:");
 			this.print();
 		}
-		
 	}
 	
 	public void print()
@@ -93,7 +92,6 @@ public class Stack {
 		st.print();
 		st.adjustHeap();
 		st.print();
-
 	}
 
 }
