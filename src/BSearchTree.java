@@ -6,40 +6,64 @@ import java.util.Random;
  *
  */
 public class BSearchTree {
+	Leaf tree = null;
 	
-	
-	public Leaf create(int []a)
+	public void create(int []a)
 	{
 		int i=0;
-		Leaf tree = null;
+		
 		
 		while(i<a.length)
 		{
 			
-			this.insert(tree, a[i]);
+			this.insert(a[i]);
 			
 			i++;
 		}
 		
-		return tree;
+		
 	}
 	
-	public void insert(Leaf tree, int x)
+	public void insert(int x)
 	{
-		if(tree==null)
+		if(this.tree==null)
 		{
-			tree = new Leaf(x);
-			//tree.data = x;
-			tree.lLeaf=tree.rLeaf=null;
+			this.tree = new Leaf(x);
 			return;
 		}
 		
-		if(tree.data<=x)
+		Leaf node = this.tree;
+		boolean flag = false;
+		while(true)
 		{
-			insert(tree.lLeaf,x);
+		
+			if(node.data<=x)
+			{
+				Leaf newNode = node.lLeaf;
+				if(newNode==null)
+				{
+					newNode = new Leaf(x);
+					node.lLeaf = newNode;
+					break;
+				}
+				else{
+					node = node.lLeaf;
+				}
+			}
+			else{
+				Leaf newNode = node.rLeaf;
+				if(newNode==null)
+				{
+					newNode = new Leaf(x);
+					node.rLeaf = newNode;
+					break;
+				}
+				else{
+					node = node.rLeaf;
+				}
+			}
 		}
-		else
-			insert(tree.rLeaf,x);
+		
 	}
 	
 	public Leaf search(int x, Leaf tree)
@@ -61,9 +85,9 @@ public class BSearchTree {
 		{
 			a[i]=rng.nextInt(20);
 		}
-		Leaf tree = bst.create(a);
+		bst.create(a);
 		
-		Leaf result = bst.search(10,tree);
+		Leaf result = bst.search(10,bst.tree);
 		if(result==null)
 		{
 			System.out.println("10²»ÔÚ¼ìË÷Ê÷ÖÐ");
